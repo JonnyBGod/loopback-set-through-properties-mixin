@@ -68,7 +68,7 @@ describe('SetThroughProperties', function() {
 
   it('should set through model properties', function(done) {
     request(server).post('/apps/1/users')
-      .send({userRole: { type: 'collaborator'}})
+      .send({userRole: {type: 'collaborator'}})
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
@@ -76,7 +76,6 @@ describe('SetThroughProperties', function() {
         UserRole.find('', function(err, roles) {
           if (err) return done(err);
 
-          console.log(roles);
           expect(JSON.stringify(roles)).to.equal(JSON.stringify([{
             id: 1,
             userId: 1,
