@@ -6,8 +6,8 @@ module.exports = function(Model, options) {
 
     if (relations) {
       Object.keys(relations).forEach(function(targetModel) {
-        var type =
-          relations[targetModel].modelThrough ? 'hasManyThrough' : relations[targetModel].type;
+        var type = (relations[targetModel].modelThrough || relations[targetModel].through) ?
+          'hasManyThrough' : relations[targetModel].type;
 
         if (type === 'hasManyThrough') {
           Model.beforeRemote('prototype.__create__' + targetModel, extractThroughProperties);
