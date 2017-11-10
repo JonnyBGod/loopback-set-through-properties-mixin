@@ -52,8 +52,8 @@ module.exports = function(Model, options) {
     var throughModel = Model.relations[ctx.hookState.relationName].modelThrough;
 
     var query = {};
-    query[relationKey] = ctx.instance.id;
-    query[throughKey] = ctx.result.id;
+    query[relationKey] = ctx.result.id;
+    query[throughKey] = ctx.instance.id;
 
     throughModel.updateAll(query, ctx.hookState.data, next);
   }
