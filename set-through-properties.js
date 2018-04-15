@@ -23,7 +23,7 @@ module.exports = function(Model, options) {
   });
 
   function extractThroughProperties(ctx, unused, next) {
-    var relationName = ctx.methodString.match(/__([a-z\d]+)$/)[1];
+    var relationName = ctx.methodString.match(/__([a-zA-Z]+)$/)[1];
     var throughModelName = Model.relations[relationName].modelThrough.definition.name;
 
     if (ctx.args.data && ctx.args.data[throughModelName]) {
